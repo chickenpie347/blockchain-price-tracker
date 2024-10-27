@@ -22,7 +22,7 @@ export class PriceService {
     await this.savePrice('polygon', polygonPrice,  new Date());
   }
 
-  // This method fetches the prices for Ethereum and Polygon for the last 24 hours
+  // Fetches the prices for Ethereum and Polygon for the last 24 hours, if stored
   async getPricesForLast24Hours() {
     const now = new Date();
     const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000); // 24 hours ago

@@ -22,7 +22,8 @@ export class SwapService {
     if (ethAmount == null || isNaN(ethAmount) || ethAmount <= 0) {
         throw new Error("Please provide a valid amount greater than 0.");
     }
-    const ethPriceInUsd = await this.getPrice('1027'); // Use CoinMarketCap IDs for ETH and BTC with CMC API
+    // Use CoinMarketCap IDs for ETH and BTC with CMC API
+    const ethPriceInUsd = await this.getPrice('1027'); 
     const btcPriceInUsd = await this.getPrice('1');
 
     // Calculate the total ETH value in USD
@@ -48,7 +49,6 @@ export class SwapService {
     const cmcApiKey = process.env.CMC_API_KEY;
     const apiUrl = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=${symbol}&CMC_PRO_API_KEY=${cmcApiKey}`;
     const response = await firstValueFrom(this.httpService.get(apiUrl));
-    //console.log (response.data);
     return response.data.data[symbol].quote.USD.price;
   }
 

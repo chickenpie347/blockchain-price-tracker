@@ -45,8 +45,7 @@ describe('PriceService', () => {
 
   describe('getPricesForLast24Hours', () => {
     it('should return prices for the last 24 hours', async () => {
-      //const result = [{"ethereum":{ id:1, timestamp: new Date(), chain: 'ethereum', price: 2000, createdAt: new Date() }, "polygon":{ id:1, timestamp: new Date(), chain: 'polygon', price: 2000, createdAt: new Date() } }];
-
+      
       jest.spyOn(repository, 'find').mockResolvedValue(mockPrices);
 
       const prices = await service.getPricesForLast24Hours();

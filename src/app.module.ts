@@ -36,7 +36,7 @@ export const AppDataSource = new DataSource({
   providers: [AppService],
 })
 export class AppModule {
-  /**  Optionally initialize the data source here
+  /**  Optionally, initialize the data source here
   static async initialize() {
     await AppDataSource.initialize();
     await AppDataSource.runMigrations();  //Automatically run migrations on startup 
