@@ -1,0 +1,33 @@
+version: '3'
+services:
+  app:
+    container_name: blockchain-price-tracker-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgrespassword
+      - DB_NAME=price_tracker
+    volumes:
+      - .:/usr/src/app
+  db:
+    image: postgres:13-alpine
+    container_name: blockchain-price-tracker-db
+    environment:
+      POSTGRES_DB: price_tracker
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
